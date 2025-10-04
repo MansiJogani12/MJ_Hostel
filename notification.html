@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Notifications – MJ Hostel</title>
+
+  <link rel="stylesheet" href="notification.css">
+  <script>
+    function goToDashboard() {
+      // Try multiple dashboard options
+      const dashboardOptions = [
+        'dashboard.html',
+        'new_dashboard.php',
+        'enhanced_dashboard.php',
+        'clean_dashboard.php'
+      ];
+      
+      // Try the first available dashboard
+      window.location.href = dashboardOptions[0];
+    }
+  </script>
+</head>
+<body>
+  <div class="header">
+    📋 MJ Hostel Notifications
+    <a class="back-btn" href="dashboard.html" onclick="goToDashboard(); return false;">← Back to Dashboard</a>
+  </div>
+
+  <div class="container">
+    <div class="notification">
+      <h4>Room Inspection on 5th July</h4>
+      <p>Warden will inspect all rooms between 10:00 AM and 12:00 PM. Please ensure your room is clean.</p>
+    </div>
+
+    <div class="notification">
+      <h4>Mess Menu Updated</h4>
+      <p>The new mess menu for July is now available. Visit the food section for details.</p>
+    </div>
+
+    <div class="notification">
+      <h4>Fee Payment Reminder</h4>
+      <p>Last date to pay hostel fees is 10th July. Late fees will be charged after this date.</p>
+    </div>
+  </div>
+  
+  <div style="text-align: center; margin: 20px;">
+    <a href="dashboard.html" class="back-btn" style="display: inline-block; margin: 0 10px;">🏠 Dashboard</a>
+    <a href="profile.html" class="back-btn" style="display: inline-block; margin: 0 10px; background: #28a745;">👤 Profile</a>
+    <a href="login.html" class="back-btn" style="display: inline-block; margin: 0 10px; background: #6c757d;">🔑 Login</a>
+  </div>
+  
+  <footer class="footer">
+  <p>&copy; 2025 MJ Hostel | Managing Comfort, Ensuring Safety</p>
+     </footer>
+</body>
+</html>

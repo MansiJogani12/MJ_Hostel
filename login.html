@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – MJ Hostel</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="login">
+
+    <div class="login-container">
+    <h2>Welcome Back 👋</h2>
+       <form action="new_login.php" method="POST" id="loginForm">
+      <input type="text" name="userId" id="userId" placeholder="User ID" required />
+      <input type="password" name="password" id="password" placeholder="Password" required />
+      <button type="submit" id="loginBtn">Login</button>
+      <div class="error" id="error-msg"></div>
+    </form>
+
+    <div class="links">
+      <a href="new_forgot_userid.html">Forgot User ID?</a>
+      <a href="new_forgot_password.html">Forgot Password?</a>
+      <a href="new_register.html">Create a New Account</a>
+    </div>
+  </div>
+  <footer class="footer">
+  <p>&copy; 2025 MJ Hostel | Managing Comfort, Ensuring Safety</p>
+     </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginForm = document.getElementById('loginForm');
+      const loginBtn = document.getElementById('loginBtn');
+      const errorMsg = document.getElementById('error-msg');
+      
+      // Handle form submission
+      loginForm.addEventListener('submit', function(e) {
+        const userId = document.getElementById('userId').value.trim();
+        const password = document.getElementById('password').value;
+        
+        // Basic validation
+        if (!userId || !password) {
+          e.preventDefault();
+          showError('Please enter both User ID and Password');
+          return;
+        }
+        
+        // Disable button and show loading
+        loginBtn.disabled = true;
+        loginBtn.textContent = 'Logging in...';
+        errorMsg.textContent = '';
+      });
+      
+      function showError(message) {
+        errorMsg.textContent = message;
+        errorMsg.style.color = '#c62828';
+        errorMsg.style.padding = '10px';
+        errorMsg.style.backgroundColor = '#ffebee';
+        errorMsg.style.borderRadius = '5px';
+        errorMsg.style.marginTop = '10px';
+        errorMsg.style.borderLeft = '4px solid #c62828';
+      }
+      
+      // Check for error message from URL parameter (if redirected back with error)
+      const urlParams = new URLSearchParams(window.location.search);
+      const error = urlParams.get('error');
+      if (error) {
+        showError(decodeURIComponent(error));
+      }
+    });
+  </script>
+</body>
+</html>

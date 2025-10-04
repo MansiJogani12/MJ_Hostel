@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - MJ Hostel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .register-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            color: #764ba2;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .logo p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 12px;
+            background: #764ba2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .register-btn:hover {
+            background: #5d3a85;
+        }
+
+        .register-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .error-message,
+        .success-message {
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links a {
+            color: #764ba2;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .password-strength {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .weak { color: #dc3545; }
+        .medium { color: #ffc107; }
+        .strong { color: #28a745; }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="logo">
+            <h1>🏠 MJ Hostel</h1>
+            <p>Create Your Account</p>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+
+        <form id="registerForm" action="new_register.php" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="userId">User ID *</label>
+                <input type="text" id="userId" name="userId" required>
+                <small>Choose a unique user ID for login</small>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" maxlength="10" required>
+                <small>Enter 10-digit mobile number</small>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password *</label>
+                <input type="password" id="password" name="password" required>
+                <div id="passwordStrength" class="password-strength"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password *</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+
+
+
+            <!-- Parent Information Section -->
+            <div class="section-header" style="margin-top: 30px; margin-bottom: 20px; color: #764ba2; font-weight: 600; font-size: 1.1rem; border-bottom: 2px solid #764ba2; padding-bottom: 8px;">
+                👨‍👩‍👦 Parent Information
+            </div>
+
+            <div class="form-group">
+                <label for="fatherName">Father's Name</label>
+                <input type="text" id="fatherName" name="fatherName">
+            </div>
+
+            <div class="form-group">
+                <label for="motherName">Mother's Name</label>
+                <input type="text" id="motherName" name="motherName">
+            </div>
+
+            <div class="form-group">
+                <label for="fatherPhone">Father's Phone Number</label>
+                <input type="tel" id="fatherPhone" name="fatherPhone" pattern="[0-9]{10}" maxlength="10">
+                <small>Enter 10-digit mobile number</small>
+            </div>
+
+            <!-- Address Information Section -->
+            <div class="section-header" style="margin-top: 30px; margin-bottom: 20px; color: #764ba2; font-weight: 600; font-size: 1.1rem; border-bottom: 2px solid #764ba2; padding-bottom: 8px;">
+                🏠 Address Information
+            </div>
+
+            <div class="form-group">
+                <label for="addressLine1">Address Line 1 *</label>
+                <input type="text" id="addressLine1" name="addressLine1" required>
+                <small>House/Flat number, Building name</small>
+            </div>
+
+            <div class="form-group">
+                <label for="addressLine2">Address Line 2</label>
+                <input type="text" id="addressLine2" name="addressLine2">
+                <small>Street, Area, Landmark</small>
+            </div>
+
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                    <label for="city">City *</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="taluka">Taluka</label>
+                    <input type="text" id="taluka" name="taluka">
+                </div>
+            </div>
+
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                    <label for="district">District *</label>
+                    <input type="text" id="district" name="district" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State *</label>
+                    <input type="text" id="state" name="state" required>
+                </div>
+            </div>
+
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                    <label for="pincode">Pincode *</label>
+                    <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" maxlength="6" required>
+                    <small>6-digit pincode</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country *</label>
+                    <input type="text" id="country" name="country" value="India" required>
+                </div>
+            </div>
+
+            <!-- Hostel Information Section -->
+            <div class="section-header" style="margin-top: 30px; margin-bottom: 20px; color: #764ba2; font-weight: 600; font-size: 1.1rem; border-bottom: 2px solid #764ba2; padding-bottom: 8px;">
+                🏨 Hostel Information
+            </div>
+
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                    <label for="roomNumber">Room Number</label>
+                    <input type="text" id="roomNumber" name="roomNumber" pattern="[A-Za-z0-9\-]{1,10}" maxlength="10">
+                    <small>e.g., A-101, B23, Room-15</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="hostel">Hostel *</label>
+                    <select id="hostel" name="hostel" required>
+                        <option value="">Select Hostel</option>
+                        <option value="Boys Hostel A">Boys Hostel A</option>
+                        <option value="Boys Hostel B">Boys Hostel B</option>
+                        <option value="Girls Hostel A">Girls Hostel A</option>
+                        <option value="Girls Hostel B">Girls Hostel B</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" id="registerBtn" class="register-btn">Create Account</button>
+        </form>
+
+        <div class="links">
+            <a href="new_login.html">Already have an account? Login</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registerForm');
+            const registerBtn = document.getElementById('registerBtn');
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const passwordStrengthDiv = document.getElementById('passwordStrength');
+
+            // Check for messages in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const success = urlParams.get('success');
+            
+            if (error) {
+                showError(decodeURIComponent(error));
+            }
+            if (success) {
+                showSuccess(decodeURIComponent(success));
+            }
+
+            // Password strength checker
+            passwordInput.addEventListener('input', function() {
+                const password = this.value;
+                const strength = checkPasswordStrength(password);
+                
+                passwordStrengthDiv.textContent = strength.text;
+                passwordStrengthDiv.className = 'password-strength ' + strength.class;
+            });
+
+            // Form validation
+            form.addEventListener('submit', function(e) {
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+                const phone = document.getElementById('phone').value;
+
+                // Validate phone number
+                if (!/^[0-9]{10}$/.test(phone)) {
+                    e.preventDefault();
+                    showError('Phone number must be exactly 10 digits');
+                    return;
+                }
+
+                // Validate password match
+                if (password !== confirmPassword) {
+                    e.preventDefault();
+                    showError('Passwords do not match');
+                    return;
+                }
+
+                // Validate password strength
+                if (password.length < 6) {
+                    e.preventDefault();
+                    showError('Password must be at least 6 characters long');
+                    return;
+                }
+
+                // Show loading state
+                registerBtn.disabled = true;
+                registerBtn.textContent = 'Creating Account...';
+                hideMessages();
+            });
+
+            function checkPasswordStrength(password) {
+                if (password.length < 6) {
+                    return { text: 'Password too short', class: 'weak' };
+                } else if (password.length < 8) {
+                    return { text: 'Weak password', class: 'weak' };
+                } else if (!/(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
+                    return { text: 'Medium strength', class: 'medium' };
+                } else if (!/(?=.*[0-9])/.test(password)) {
+                    return { text: 'Good strength', class: 'medium' };
+                } else {
+                    return { text: 'Strong password', class: 'strong' };
+                }
+            }
+
+            function showError(message) {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+                successDiv.style.display = 'none';
+            }
+
+            function showSuccess(message) {
+                successDiv.textContent = message;
+                successDiv.style.display = 'block';
+                errorDiv.style.display = 'none';
+            }
+
+            function hideMessages() {
+                errorDiv.style.display = 'none';
+                successDiv.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

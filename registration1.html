@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create New Account</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="signup-card">
+    <h2>Create New Account</h2>
+
+    <!-- Updated form to submit to text file -->
+    <form action="submit_registration_mysql.php" method="POST">
+
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" name="name" placeholder="Full Name" required />
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" name="email" placeholder="Email Address" required />
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-id-badge"></i>
+        <input type="text" name="userId" placeholder="User ID" required />
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-phone"></i>
+        <input type="text" name="phone" placeholder="Phone Number" required pattern="[0-9]{10}" maxlength="10"/>
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" name="password" placeholder="Create Password" required />
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" required />
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-building"></i>
+        <select name="hostel" required>
+          <option value="">Select Hostel Code</option>
+          <option value="hostel1">Hostel 1</option>
+          <option value="hostel2">Hostel 2</option>
+          <option value="hostel3">Hostel 3</option>
+          <option value="hostel4">Hostel 4</option>
+          <option value="hostel5">Hostel 5</option>
+          <option value="hostel6">Hostel 6</option>
+        </select>
+      </div>
+
+      <button type="submit" class="signup-btn" id="submitBtn">Sign Up</button>
+    </form>
+
+    <a href="login.html" class="login-link">← Already have an account? Login</a>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 MJ Hostel | Managing Comfort, Ensuring Safety</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      const submitBtn = document.getElementById('submitBtn');
+      
+      form.addEventListener('submit', function(e) {
+        const password = document.querySelector('input[name="password"]').value;
+        const confirmPassword = document.querySelector('input[name="confirmPassword"]').value;
+        
+        if (password !== confirmPassword) {
+          e.preventDefault();
+          alert('Passwords do not match. Please try again.');
+          return false;
+        }
+        
+        // Disable submit button to prevent double submission
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Processing...';
+      });
+    });
+  </script>
+</body>
+</html>

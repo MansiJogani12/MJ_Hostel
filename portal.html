@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CHARUSAT Hostel Portal</title>
+  <link rel="stylesheet" href="portal.css">
+</head>
+<body>
+
+<header>
+  <div class="site-title">MJ Hostel</div>
+  <nav>
+    <a href="dashboard.html">← Back to Dashboard</a>
+  
+  </nav>
+</header>
+
+
+
+  <!-- Slider Section -->
+  <section class="slider-section">
+    <h2>Hostel Gallery</h2>
+    <div class="slider">
+      <div class="slides">
+        <img src="assets/img1.webp" class="slide">
+        <img src="assets/img2.webp" class="slide">
+        <img src="assets/img3.webp" class="slide">
+      </div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <button class="faq-question">What is the hostel check-in time?</button>
+    <div class="faq-answer"><p>Check-in is 10:00 AM to 6:00 PM.</p></div>
+
+    <button class="faq-question">How to request a room change?</button>
+    <div class="faq-answer"><p>Submit a request via the admin portal with a valid reason.</p></div>
+
+    <button class="faq-question">Are meals provided?</button>
+    <div class="faq-answer"><p>Yes, meals are provided in the dining hall.</p></div>
+  </section>
+
+  <!-- Popup Section -->
+  <section class="popup-section">
+    <button id="openModal" class="btn">Show Important Notice</button>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Important Notice</h3>
+        <p>The hostel will be closed on national holidays. Plan accordingly.</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="portal.js"></script>
+</body>
+</html>

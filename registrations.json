@@ -1,0 +1,92 @@
+[
+    {
+        "fatherName": "",
+        "motherName": "",
+        "fatherPhone": "",
+        "line1": "",
+        "line2": "",
+        "city": "",
+        "taluka": "",
+        "pincode": "",
+        "district": "",
+        "state": "",
+        "country": "",
+        "room": "",
+        "submittedOn": "2025-10-02 22:20:27"
+    },
+    {
+        "fatherName": "",
+        "motherName": "",
+        "fatherPhone": "",
+        "line1": "",
+        "line2": "",
+        "city": "",
+        "taluka": "",
+        "pincode": "",
+        "district": "",
+        "state": "",
+        "country": "",
+        "room": "",
+        "submittedOn": "2025-10-02 22:20:55"
+    },
+    {
+        "userId": "11",
+        "parentInfo": {
+            "fatherName": "ms",
+            "motherName": "s",
+            "fatherPhone": "9825141040"
+        },
+        "address": {
+            "line1": "902-G AMBA LUXURIYA,PASODARA PATIYA , KAMREJ, SURAT-,GUJARAT-394190",
+            "line2": "A",
+            "city": "A",
+            "taluka": "A",
+            "pincode": "123123",
+            "district": "1",
+            "state": "India",
+            "country": "India",
+            "room": 1
+        },
+        "submittedOn": "2025-10-03 09:30:39"
+    },
+    {
+        "userId": "m",
+        "parentInfo": {
+            "fatherName": "s11",
+            "motherName": "s11",
+            "fatherPhone": "1111111111"
+        },
+        "address": {
+            "line1": "111111",
+            "line2": "1111111",
+            "city": "1",
+            "taluka": "1",
+            "pincode": "111111",
+            "district": "1",
+            "state": "1",
+            "country": "India",
+            "room": 1
+        },
+        "submittedOn": "2025-10-03 09:39:29"
+    },
+    {
+        "userId": "j",
+        "parentInfo": {
+            "fatherName": "sss",
+            "motherName": "sss",
+            "fatherPhone": "2222222222"
+        },
+        "address": {
+            "line1": "ss",
+            "line2": "ss",
+            "city": "ss",
+            "taluka": "ss",
+            "pincode": "222222",
+            "district": "ss",
+            "state": "ss",
+            "country": "India",
+            "room": 11
+        },
+        "submittedOn": "2025-10-03 09:40:51"
+    }
+]

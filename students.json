@@ -1,0 +1,152 @@
+[
+    {
+        "name": "Jogani Mansi Sanjaybhai",
+        "email": "mansi.jogani902@gmail.com",
+        "userId": "d",
+        "phone": "9825141040",
+        "password": "123",
+        "hostel": "hostel6",
+        "submittedOn": "2025-10-02 22:25:13"
+    },
+    {
+        "name": "Jogani Mansi Sanjaybhai",
+        "email": "mansi.jogani902@gmail.com",
+        "userId": "d",
+        "phone": "9825141040",
+        "password": "123",
+        "confirmPassword": "123",
+        "hostel": "hostel4",
+        "additional": {
+            "parent": {
+                "fatherName": "x22",
+                "motherName": "y22",
+                "fatherPhone": "9825141040"
+            },
+            "address": {
+                "line1": "902-G AMBA LUXURIYA,PASODARA PATIYA , KAMREJ, SURAT-,GUJARAT-394190",
+                "line2": "xz",
+                "city": "Surat",
+                "taluka": "Surat",
+                "pincode": "394190",
+                "district": "xz",
+                "state": "Gujarat",
+                "country": "India",
+                "room": "12"
+            }
+        }
+    },
+    {
+        "name": "Jogani Mansi Sanjaybhai",
+        "email": "mansi.jogani902@gmail.com",
+        "userId": "d",
+        "phone": "9825141040",
+        "password": "123",
+        "confirmPassword": "123",
+        "hostel": "hostel5",
+        "additional": {
+            "parent": {
+                "fatherName": "xz",
+                "motherName": "y22",
+                "fatherPhone": "9825141040"
+            },
+            "address": {
+                "line1": "902-G AMBA LUXURIYA,PASODARA PATIYA , KAMREJ, SURAT-,GUJARAT-394190",
+                "line2": "xz",
+                "city": "Surat",
+                "taluka": "Surat",
+                "pincode": "394190",
+                "district": "xz",
+                "state": "Gujarat",
+                "country": "India",
+                "room": "22"
+            }
+        }
+    },
+    {
+        "userId": "11",
+        "name": "Mansi Sanjaybhai Jogani",
+        "email": "mansi.jogani902@gmail.com",
+        "phone": "0982514104",
+        "password": "$2y$10$GiyotcZxsd7my1dsTYnN4uCTampfFBGN4c1nzfjMeVrgrAxs.BWFS",
+        "hostel": "hostel3",
+        "registrationStep": 2,
+        "createdAt": "2025-10-03 09:30:14",
+        "updatedAt": "2025-10-03 09:30:39",
+        "parentInfo": {
+            "fatherName": "ms",
+            "motherName": "s",
+            "fatherPhone": "9825141040"
+        },
+        "address": {
+            "line1": "902-G AMBA LUXURIYA,PASODARA PATIYA , KAMREJ, SURAT-,GUJARAT-394190",
+            "line2": "A",
+            "city": "A",
+            "taluka": "A",
+            "pincode": "123123",
+            "district": "1",
+            "state": "India",
+            "country": "India",
+            "room": 1
+        },
+        "registrationCompleted": true,
+        "completedAt": "2025-10-03 09:30:39"
+    },
+    {
+        "userId": "m",
+        "name": "m",
+        "email": "mansi@gmail.com",
+        "phone": "9885555555",
+        "password": "$2y$10$xb8qH7IjY5hmSf.y2FcsuusmRkfiswB4HpkJC\/u8yc.gigDneRxf.",
+        "hostel": "hostel3",
+        "registrationStep": 2,
+        "createdAt": "2025-10-03 09:38:45",
+        "updatedAt": "2025-10-03 09:39:29",
+        "parentInfo": {
+            "fatherName": "s11",
+            "motherName": "s11",
+            "fatherPhone": "1111111111"
+        },
+        "address": {
+            "line1": "111111",
+            "line2": "1111111",
+            "city": "1",
+            "taluka": "1",
+            "pincode": "111111",
+            "district": "1",
+            "state": "1",
+            "country": "India",
+            "room": 1
+        },
+        "registrationCompleted": true,
+        "completedAt": "2025-10-03 09:39:29"
+    },
+    {
+        "userId": "j",
+        "name": "j",
+        "email": "m@gmail.com",
+        "phone": "9888888888",
+        "password": "$2y$10$eCj9bHDrSvYe\/03Z3F1ateMaGT1ohhn2.kuYkdJK3eO7QODPFAw2C",
+        "hostel": "hostel3",
+        "registrationStep": 2,
+        "createdAt": "2025-10-03 09:40:18",
+        "updatedAt": "2025-10-03 09:40:51",
+        "parentInfo": {
+            "fatherName": "sss",
+            "motherName": "sss",
+            "fatherPhone": "2222222222"
+        },
+        "address": {
+            "line1": "ss",
+            "line2": "ss",
+            "city": "ss",
+            "taluka": "ss",
+            "pincode": "222222",
+            "district": "ss",
+            "state": "ss",
+            "country": "India",
+            "room": 11
+        },
+        "registrationCompleted": true,
+        "completedAt": "2025-10-03 09:40:51"
+    }
+]

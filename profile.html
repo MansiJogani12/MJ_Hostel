@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Profile</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+  <div class="header-bar">
+    <h1>Profile Page</h1>
+    <a href="dashboard.html" class="dashboard-link">🏠 Dashboard</a>
+  </div>
+
+  <div class="profile">
+    <h2 class="username" id="username">Loading...</h2>
+
+    <div class="section blue">Student Info</div>
+    <div class="info-box" id="student-info"></div>
+
+    <div class="section blue">Parent Info</div>
+    <div class="info-box" id="parent-info"></div>
+
+    <div class="section pink">Address Info</div>
+    <div class="info-box" id="address-info"></div>
+
+    <div class="section blue">Counsellor Info</div>
+    <div class="info-box" id="counsellor-info"></div>
+
+    <div class="section pink">Upcoming Events</div>
+    <div class="info-box" id="events-list"></div>
+
+    <div class="section grey">Form Submission Date</div>
+    <div class="info-box" id="form-date"></div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 MJ Hostel | Managing Comfort, Ensuring Safety</p>
+  </footer>
+
+  <script>
+    // ----- Sample Counsellor Data -----
+    const counsellors = [
+      { name: "Mr. Rajesh Kumar", email: "rajesh.kumar@charusat.edu.in", phone: "9876543210" },
+      { name: "Ms. Priya Sharma", email: "priya.sharma@charusat.edu.in", phone: "9876501234" },
+      { name: "Dr. Amit Patel", email: "amit.patel@charusat.edu.in", phone: "9876509876" },
+      { name: "Ms. Neha Singh", email: "neha.singh@charusat.edu.in", phone: "9876512345" }
+    ];
+
+    // ----- Sample Event Data -----
+    const events = [
+      { title: "Orientation Program", date: "2025-10-15" },
+      { title: "Workshop on AI", date: "2025-11-01" },
+      { title: "Sports Meet", date: "2025-12-05" },
+      { title: "Cultural Night", date: "2025-12-20" },
+      { title: "Annual Function", date: "2026-01-15" }
+    ];
+
+    // Function to safely get nested property
+    function getNestedProperty(obj, path, defaultValue = '-') {
+      return path.split('.').reduce((o, p) => (o && o[p] !== undefined) ? o[p] : defaultValue, obj);
+    }
+
+    // ----- Load Student Data from Server -----
+    async function loadStudentData() {
+      try {
+        // Get userId from URL parameter if available
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('userId');
+        
+        const url = userId ? `get_student_data.php?userId=${encodeURIComponent(userId)}` : 'get_student_data.php';
+        const response = await fetch(url);
+        const result = await response.json();
+
+        if (result.success && result.data) {
+          const studentData = result.data;
+          
+          // Display Username
+          const usernameEl = document.getElementById("username");
+          usernameEl.textContent = studentData.name || "Student";
+
+          // Student Info
+          const studentInfoEl = document.getElementById("student-info");
+          studentInfoEl.innerHTML = `
+            <p><strong>User ID:</strong> ${studentData.userId || '-'}</p>
+            <p><strong>Email:</strong> ${studentData.email || '-'}</p>
+            <p><strong>Phone:</strong> ${studentData.phone || '-'}</p>
+            <p><strong>Hostel:</strong> ${studentData.hostel || '-'}</p>
+            <p><strong>Room No:</strong> ${getNestedProperty(studentData, 'address.room')}</p>
+          `;
+
+          // Parent Info
+          const parentEl = document.getElementById("parent-info");
+          parentEl.innerHTML = `
+            <p><strong>Father's Name:</strong> ${getNestedProperty(studentData, 'parentInfo.fatherName')}</p>
+            <p><strong>Mother's Name:</strong> ${getNestedProperty(studentData, 'parentInfo.motherName')}</p>
+            <p><strong>Father's Phone:</strong> ${getNestedProperty(studentData, 'parentInfo.fatherPhone')}</p>
+          `;
+
+          // Address Info
+          const addressEl = document.getElementById("address-info");
+          const address = studentData.address || {};
+          addressEl.innerHTML = `
+            <p><strong>Address Line 1:</strong> ${address.line1 || '-'}</p>
+            <p><strong>Address Line 2:</strong> ${address.line2 || '-'}</p>
+            <p><strong>City:</strong> ${address.city || '-'}</p>
+            <p><strong>Taluka:</strong> ${address.taluka || '-'}</p>
+            <p><strong>District:</strong> ${address.district || '-'}</p>
+            <p><strong>State:</strong> ${address.state || '-'}</p>
+            <p><strong>Pincode:</strong> ${address.pincode || '-'}</p>
+            <p><strong>Country:</strong> ${address.country || '-'}</p>
+          `;
+
+          // Counsellor Info (random assignment for demo)
+          const counsellorEl = document.getElementById("counsellor-info");
+          const assignedCounsellor = counsellors[Math.floor(Math.random() * counsellors.length)];
+          counsellorEl.innerHTML = `
+            <p><strong>Name:</strong> ${assignedCounsellor.name}</p>
+            <p><strong>Email:</strong> ${assignedCounsellor.email}</p>
+            <p><strong>Phone:</strong> ${assignedCounsellor.phone}</p>
+          `;
+
+          // Events List
+          const eventsEl = document.getElementById("events-list");
+          let eventHTML = "<ul>";
+          events.forEach(ev => {
+            eventHTML += `<li><strong>${ev.title}</strong> - ${ev.date}</li>`;
+          });
+          eventHTML += "</ul>";
+          eventsEl.innerHTML = eventHTML;
+
+          // Form Submission Date
+          const formDateEl = document.getElementById("form-date");
+          formDateEl.innerHTML = `
+            <p><strong>Registration Started:</strong> ${studentData.createdAt || '-'}</p>
+            <p><strong>Registration Completed:</strong> ${studentData.completedAt || 'Pending'}</p>
+            <p><strong>Status:</strong> ${studentData.registrationCompleted ? '✅ Completed' : '⏳ In Progress'}</p>
+          `;
+        } else {
+          document.getElementById("username").textContent = "No Student Data Found";
+          document.querySelectorAll('.info-box').forEach(box => {
+            box.innerHTML = '<p>No data available. Please complete registration first.</p>';
+          });
+        }
+      } catch (error) {
+        console.error('Error loading student data:', error);
+        document.getElementById("username").textContent = "Error Loading Data";
+        document.querySelectorAll('.info-box').forEach(box => {
+          box.innerHTML = '<p>Error loading data. Please try again later.</p>';
+        });
+      }
+    }
+
+    // Load data when page loads
+    document.addEventListener('DOMContentLoaded', loadStudentData);
+  </script>
+</body>
+</html>

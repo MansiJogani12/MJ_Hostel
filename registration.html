@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Additional Info</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .form-card {
+      background: #fff;
+      width: 480px;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.95em;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #764ba2;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      background-color: #5b3a8a;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-card">
+    <h2>Address & Parent Info</h2>
+
+            <h2>📝 Student Registration Portal</h2>
+        <p>Register for Academic Year 2024-25</p>
+        <form action="submit_registration_mysql.php" method="POST" class="registration-form">
+      <div class="input-group">
+        <label for="fatherName">Father's Name</label>
+        <input type="text" name="fatherName" id="fatherName" required minlength="3" />
+      </div>
+
+      <div class="input-group">
+        <label for="motherName">Mother's Name</label>
+        <input type="text" name="motherName" id="motherName" required minlength="3" />
+      </div>
+
+      <div class="input-group">
+        <label for="fatherPhone">Father's Phone Number</label>
+        <input type="tel" name="fatherPhone" id="fatherPhone" pattern="[0-9]{10}" maxlength="10" required />
+      </div>
+
+      <div class="input-group">
+        <label for="line1">Address Line 1</label>
+        <input type="text" name="line1" id="line1" required />
+      </div>
+
+      <div class="input-group">
+        <label for="line2">Address Line 2</label>
+        <input type="text" name="line2" id="line2" />
+      </div>
+
+      <div class="input-group">
+        <label for="city">Village / Area / Landmark</label>
+        <input type="text" name="city" id="city" required />
+      </div>
+
+      <div class="input-group">
+        <label for="taluka">Taluka / City</label>
+        <input type="text" name="taluka" id="taluka" />
+      </div>
+
+      <div class="input-group">
+        <label for="pincode">Pincode</label>
+        <input type="text" name="pincode" id="pincode" pattern="[0-9]{6}" maxlength="6" required />
+      </div>
+
+      <div class="input-group">
+        <label for="district">District</label>
+        <input type="text" name="district" id="district" />
+      </div>
+
+      <div class="input-group">
+        <label for="state">State</label>
+        <input type="text" name="state" id="state" required />
+      </div>
+
+      <div class="input-group">
+        <label for="country">Country</label>
+        <input type="text" name="country" id="country" value="India" required />
+      </div>
+
+      <div class="input-group">
+        <label for="room">Room Number</label>
+        <input type="number" name="room" id="room" required />
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Submit Registration</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      const submitBtn = document.getElementById('submitBtn');
+      
+      // Check if user came from step 1
+      const urlParams = new URLSearchParams(window.location.search);
+      const userId = urlParams.get('userId');
+      
+      if (!userId) {
+        alert('Please complete Step 1 first.');
+        window.location.href = 'registration1.html';
+        return;
+      }
+      
+      // Add user ID to form action
+      form.action = form.action + '?userId=' + encodeURIComponent(userId);
+      
+      form.addEventListener('submit', function(e) {
+        // Disable submit button to prevent double submission
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Processing...';
+      });
+    });
+  </script>
+</body>
+</html>
